@@ -108,6 +108,7 @@ const EditUserPage = () => {
                                 value={data.name}
                                 onChange={handleChange}
                                 error={errors.name}
+                                autoFocus
                             />
                             <TextField
                                 label="Электронная почта"
