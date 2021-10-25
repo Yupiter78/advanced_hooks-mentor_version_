@@ -10,14 +10,14 @@ const FormComponent = ({ children }) => {
     useEffect(() => {
         console.log(data);
     }, [data]);
-    const handleChnge = (target) => {
+    const handleChange = (target) => {
         setData((prevState) => ({ ...prevState, [target.name]: target.value }));
     };
 
     return React.Children.map(children, (child) => {
         const config = {
             ...child.props,
-            onChange: handleChnge,
+            onChange: handleChange,
             value: data[child.props.name] || ""
         };
 

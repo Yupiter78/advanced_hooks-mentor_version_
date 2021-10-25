@@ -1,11 +1,16 @@
 import React from "react";
 import CollapseWrapper from "../common/collapse";
+import Divider from "../common/divider";
+import withAuth from "./withAuth";
+import SimpleComponent from "./simpleComponent";
 
 const HocExercise = () => {
+    const ComponentWithAuth = withAuth(SimpleComponent);
+
     return (
         <CollapseWrapper title="Упражнение">
             <p className="mt-3">
-                Вам необходимо реализовать компонент{" "}
+                Вам необзодимо реализовать компонент{" "}
                 <code>SimpleComponent</code>, который:
             </p>
             <ul>
@@ -14,13 +19,12 @@ const HocExercise = () => {
                     <code>isAuth</code>
                 </li>
                 <li>
-                    Отображайте кнопку <code>Войти</code>, если пользователь НЕ
-                    авторизован.
+                    Отображате кноку <code>Войти</code>, если пользователь НЕ
+                    авторизован
                 </li>
                 <li>
                     Отображает кнопку с содержанием{" "}
-                    <code>Выйти из системы</code>, если пользователь
-                    авторизован.
+                    <code>Выйти из системы</code>, если пользователь авторизован
                 </li>
                 <li>
                     При нажатии на кнопки вызываются методы <code>onLogin</code>{" "}
@@ -34,11 +38,11 @@ const HocExercise = () => {
             <ul>
                 <li>
                     Добавляет обертку в виде карточки boostrap (использовать
-                    существующий HOC)
+                    существующией HOC)
                 </li>
                 <li>
                     Передает параметр <code>isAuth</code>, который является
-                    результатом проверки наличия записи с названием{" "}
+                    резльтатом проверки наличия записи с названием{" "}
                     <code>user</code> в <code>localStorage</code>
                 </li>
                 <li>
@@ -47,6 +51,10 @@ const HocExercise = () => {
                     <code>user</code> в <code>localStorage</code>
                 </li>
             </ul>
+
+            <Divider />
+
+            <ComponentWithAuth />
         </CollapseWrapper>
     );
 };

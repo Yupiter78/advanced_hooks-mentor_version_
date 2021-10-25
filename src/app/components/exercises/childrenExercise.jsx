@@ -1,5 +1,8 @@
 import React from "react";
 import CollapseWrapper from "../common/collapse";
+import Divider from "../common/divider";
+import PropTypes from "prop-types";
+
 const ChildrenExercise = () => {
     return (
         <CollapseWrapper title="Упражнение">
@@ -11,9 +14,13 @@ const ChildrenExercise = () => {
                 <code>React.Children.toArray</code>
             </p>
 
-            <Component />
-            <Component />
-            <Component />
+            <Divider />
+
+            <ListComponent>
+                <Component />
+                <Component />
+                <Component />
+            </ListComponent>
         </CollapseWrapper>
     );
 };
@@ -23,3 +30,19 @@ const Component = () => {
 };
 
 export default ChildrenExercise;
+
+const ListComponent = ({ children }) => {
+    return React.Children.map(children, (child, i) => (
+        <div className="d-flex gap-1">
+            <span>{i + 1}.</span>
+            {React.cloneElement(child)}
+        </div>
+    ));
+};
+
+ListComponent.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
+};
